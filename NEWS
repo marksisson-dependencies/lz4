@@ -1,8 +1,46 @@
+v1.9.4
+perf : faster decoding speed (~+20%) on aarch64 platforms
+perf : faster decoding speed (~+70%) for -BD4 setting in CLI
+api  : new function `LZ4_decompress_safe_partial_usingDict()` by @yawqi
+api  : lz4frame: ability to provide custom allocators at state creation
+api  : can skip checksum validation for improved decoding speed
+api  : new experimental unit `lz4file` for file i/o API, by @anjiahao1
+api  : new experimental function `LZ4F_uncompressedUpdate()`, by @alexmohr
+cli  : `--list` works on `stdin` input, by @Low-power
+cli  : `--no-crc` does not produce (compression) nor check (decompression) checksums
+cli  : fix: `--test` and `--list` produce an error code when parsing invalid input
+cli  : fix: `--test -m` does no longer create decompressed file artifacts
+cli  : fix: support skippable frames when passed via `stdin`, reported by @davidmankin
+build: fix: Makefile respects CFLAGS directives passed via environment variable
+build: `LZ4_FREESTANDING`, new build macro for freestanding environments, by @t-mat
+build: `make` and `make test` are compatible with `-j` parallel run
+build: AS/400 compatibility, by @jonrumsey
+build: Solaris 10 compatibility, by @pekdon
+build: MSVC 2022 support, by @t-mat
+build: improved meson script, by @eli-schwartz
+doc  : Updated LZ4 block format, provide an "implementation notes" section
+
 v1.9.3
-perf: faster speed on Visual Studio, by @wolfpld
+perf: highly improved speed in kernel space, by @terrelln
+perf: faster speed with Visual Studio, thanks to @wolfpld and @remittor
+perf: improved dictionary compression speed, by @felixhandte
+perf: fixed LZ4_compress_HC_destSize() ratio, detected by @hsiangkao
+perf: reduced stack usage in high compression mode, by @Yanpas
+api : LZ4_decompress_safe_partial() supports unknown compressed size, requested by @jfkthame
+api : improved LZ4F_compressBound() with automatic flushing, by Christopher Harvie
+api : can (de)compress to/from NULL without UBs
+api : fix alignment test on 32-bit systems (state initialization)
+api : fix LZ4_saveDictHC() in corner case scenario, detected by @IgorKorkin
+cli : `-l` legacy format is now compatible with `-m` multiple files, by Filipe Calasans
+cli : benchmark mode supports dictionary, by @rkoradi
+cli : fix --fast with large argument, detected by @picoHz
+build: link to user-defined memory functions with LZ4_USER_MEMORY_FUNCTIONS, suggested by Yuriy Levchenko
 build: contrib/cmake_unofficial/ moved to build/cmake/
 build: visual/* moved to build/
-
+build: updated meson script, by @neheb
+build: tinycc support, by Anton Kochkov
+install: Haiku support, by Jerome Duval
+doc : updated LZ4 frame format, clarify EndMark
 
 v1.9.2
 fix : out-of-bound read in exceptional circumstances when using decompress_partial(), by @terrelln
